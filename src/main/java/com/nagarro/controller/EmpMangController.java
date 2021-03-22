@@ -113,11 +113,11 @@ public class EmpMangController {
 	}
 
 	@RequestMapping("Download")
-	public void downloadEmployeeList(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+	public void downloadEmployeeList(HttpServletRequest request, HttpServletResponse response) throws IOException{
 
 		List<Employee> employees = empMangService.getEmployee();
 
-		System.out.println("hello");
+		
 		String csvFileName = "employees.csv";
 		response.setContentType("text/csv");
 		String headerKey = "Content-Disposition";
@@ -125,7 +125,7 @@ public class EmpMangController {
 		response.setHeader(headerKey, headerValue);
 		ICsvBeanWriter csvWriter;
 
-		try {
+//		try {
 			csvWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.STANDARD_PREFERENCE);
 
 			String[] headers = new String[] { "EmployeeCode", "EmployeeName", "Location", "Email", "DateOfBrith" };
@@ -135,10 +135,10 @@ public class EmpMangController {
 				csvWriter.write(employee, headers);
 			}
 			csvWriter.close();
-		} catch (IOException ioexception) {
-			System.out.println(ioexception.getMessage());
-			
-		} 
+//		} catch (IOException ioexception) {
+//			System.out.println(ioexception.getMessage());
+//			
+//		} 
 
 	}
 }
