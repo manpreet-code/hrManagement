@@ -3,6 +3,7 @@ package com.nagarro.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,7 +34,7 @@ public class EmpMangController {
 		
 
 		ModelAndView mv = new ModelAndView();
-		System.out.println(empName+empLoc+empMail);
+		//System.out.println(empName+empLoc+empMail);
 
 		
 		Employee emp = new Employee();
@@ -112,10 +113,11 @@ public class EmpMangController {
 	}
 
 	@RequestMapping("Download")
-	public void downloadEmployeeList(HttpServletRequest request, HttpServletResponse response) {
+	public void downloadEmployeeList(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
 		List<Employee> employees = empMangService.getEmployee();
 
+		System.out.println("hello");
 		String csvFileName = "employees.csv";
 		response.setContentType("text/csv");
 		String headerKey = "Content-Disposition";
