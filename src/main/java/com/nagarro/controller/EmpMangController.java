@@ -34,7 +34,7 @@ public class EmpMangController {
 		
 
 		ModelAndView mv = new ModelAndView();
-		//System.out.println(empName+empLoc+empMail);
+		System.out.println("");
 
 		
 		Employee emp = new Employee();
@@ -79,7 +79,7 @@ public class EmpMangController {
 		return mv;
 	}
 
-	@RequestMapping("DeleteEmployee")
+	@RequestMapping("/DeleteEmployee")
 	public ModelAndView deleteEmployee(@RequestParam("empCode") long empCode, @RequestParam("hrmId") String hrmId) {
 
 		ModelAndView mv = new ModelAndView();
